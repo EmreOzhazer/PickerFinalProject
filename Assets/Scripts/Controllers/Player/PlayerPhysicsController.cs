@@ -4,7 +4,7 @@ using DG.Tweening;
 using Managers;
 using Signals;
 using UnityEngine;
-
+using System.Collections;
 namespace Controllers.Player
 {
     public class PlayerPhysicsController : MonoBehaviour
@@ -16,12 +16,14 @@ namespace Controllers.Player
         [SerializeField] private PlayerManager manager;
         [SerializeField] private new Collider collider;
         [SerializeField] private new Rigidbody rigidbody;
+        [SerializeField] public PlayerMovementController playerMovementController;
 
+        
         #endregion
 
         #endregion
-
-
+        public SliderBar _sliderBar;
+        public bool minigamestarted;
         private void OnTriggerEnter(Collider other)
         {
             if (other.CompareTag("StageArea"))
@@ -45,6 +47,46 @@ namespace Controllers.Player
                 });
                 return;
             }
+
+            if (other.CompareTag("Finish"))
+            {
+                minigamestarted = true;
+                playerMovementController._data.ForwardSpeed = 30f;
+                Debug.Log("minigamestarted");
+                Debug.Log(playerMovementController._data.ForwardSpeed);
+                
+                //StartCoroutine(ExampleCoroutine());
+            }
+            IEnumerator ExampleCoroutine()
+            {
+                //Print the time of when the function is first called.
+               
+                playerMovementController._data.ForwardSpeed -= Time.deltaTime*10f;
+                Debug.Log(playerMovementController._data.ForwardSpeed);
+                //yield on a new YieldInstruction that waits for 5 seconds.
+                yield return new WaitForSeconds(2);
+
+                //After we have waited 5 seconds print the time again.
+               
+            }
+        }
+
+        private void Update()
+        {   Debug.Log(playerMovementController._data.ForwardSpeed);
+            
+            if (minigamestarted == true)
+            {
+                playerMovementController._data.ForwardSpeed -= Time.deltaTime*2;
+                _sliderBar._bar.value -= Time.deltaTime*5;
+            }
+            // bar azalması ve hız azalması olayını senkronize yap.
+            if (playerMovementController._data.ForwardSpeed <= 0)
+            {
+                playerMovementController.StopPlayer();
+                CoreGameSignals.Instance.onLevelSuccessful?.Invoke();
+            }
+            
+
         }
 
         private void OnDrawGizmos()

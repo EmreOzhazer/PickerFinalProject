@@ -22,7 +22,7 @@ namespace Controllers.Player
 
         #region Private Variables
 
-        [ShowInInspector] private MovementData _data;
+        [ShowInInspector] public MovementData _data;
 
         [ShowInInspector] private bool _isReadyToMove, _isReadyToPlay;
 
@@ -77,8 +77,10 @@ namespace Controllers.Player
             rigidbody.velocity = new float3(0, rigidbody.velocity.y, _data.ForwardSpeed);
             rigidbody.angularVelocity = float3.zero;
         }
-
-        private void StopPlayer()
+        
+        
+        
+        public void StopPlayer()
         {
             rigidbody.velocity = float3.zero;
             rigidbody.angularVelocity = float3.zero;

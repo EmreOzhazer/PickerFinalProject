@@ -102,6 +102,7 @@ GameObject:
   - component: {fileID: 6467165668857814206}
   - component: {fileID: 6467165668857814205}
   - component: {fileID: 6467165668857814204}
+  - component: {fileID: 1939740481406931210}
   m_Layer: 0
   m_Name: Physics
   m_TagString: Player
@@ -117,7 +118,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6467165668857814203}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0.06}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -168,6 +169,23 @@ MonoBehaviour:
   manager: {fileID: 6467165669467704083}
   collider: {fileID: 0}
   rigidbody: {fileID: 0}
+  playerMovementController: {fileID: 0}
+  _sliderBar: {fileID: 1939740481406931210}
+  minigamestarted: 0
+--- !u!114 &1939740481406931210
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6467165668857814203}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d7809ea2584b34d4eb9ad2b524990161, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _bar: {fileID: 0}
+  _playerPhysicsController: {fileID: 6467165668857814204}
 --- !u!1 &6467165669467704081
 GameObject:
   m_ObjectHideFlags: 0
@@ -250,6 +268,11 @@ MonoBehaviour:
   manager: {fileID: 6467165669467704083}
   rigidbody: {fileID: 6467165669467704084}
   collider: {fileID: 0}
+  _data:
+    ForwardSpeed: 0
+    SidewaysSpeed: 0
+    ForwardForceCounter: 0
+    MiniGameMultiplier: 0
 --- !u!1001 &6467165668975884755
 PrefabInstance:
   m_ObjectHideFlags: 0
