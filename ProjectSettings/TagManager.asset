@@ -7,6 +7,9 @@ TagManager:
   - Collectable
   - StageArea
   - PoolArea
+  - 20
+  - 50
+  - 100
   layers:
   - Default
   - TransparentFX

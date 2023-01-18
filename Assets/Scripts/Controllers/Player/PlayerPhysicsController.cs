@@ -72,15 +72,15 @@ namespace Controllers.Player
         }
 
         private void Update()
-        {   Debug.Log(playerMovementController._data.ForwardSpeed);
+        {   //Debug.Log(playerMovementController._data.ForwardSpeed);
             
             if (minigamestarted == true)
             {
                 playerMovementController._data.ForwardSpeed -= Time.deltaTime*2;
-                _sliderBar._bar.value -= Time.deltaTime*5;
+                _sliderBar._bar.value -= Time.deltaTime*10;
             }
             // bar azalması ve hız azalması olayını senkronize yap.
-            if (playerMovementController._data.ForwardSpeed <= 0)
+            if (_sliderBar._bar.value <= 0)
             {
                 playerMovementController.StopPlayer();
                 CoreGameSignals.Instance.onLevelSuccessful?.Invoke();

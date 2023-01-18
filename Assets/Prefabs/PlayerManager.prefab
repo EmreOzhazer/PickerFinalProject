@@ -184,6 +184,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d7809ea2584b34d4eb9ad2b524990161, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gemText: {fileID: 0}
+  gemTextMeshPro: {fileID: 0}
+  gemManager: {fileID: 0}
   _bar: {fileID: 0}
   _playerPhysicsController: {fileID: 6467165668857814204}
 --- !u!1 &6467165669467704081

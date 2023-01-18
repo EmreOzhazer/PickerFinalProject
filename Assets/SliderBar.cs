@@ -8,9 +8,13 @@ using UnityEngine.PlayerLoop;
 using UnityEngine.UI;
 using Update = Unity.VisualScripting.Update;
 
+
 public class SliderBar : MonoBehaviour
 {
-
+    public Text gemText;
+    
+    [SerializeField] public TextMeshProUGUI gemTextMeshPro;
+    public GemManager gemManager;
     public Slider _bar;
     public PlayerPhysicsController _playerPhysicsController;
     public static SliderBar instance;
@@ -43,11 +47,26 @@ public class SliderBar : MonoBehaviour
 
     void Update()
     {
-        if (_playerPhysicsController.minigamestarted == true)
+        if (gemManager.gem20 == true)
         {
-            
-            //_bar.value -= Time.deltaTime*5;
+            Debug.Log("20 gem win");
+            gemText.text = " 20 gem win";
+            gemTextMeshPro.text = " 20 gem win";
         }
+        if (gemManager.gem50 == true)
+        {
+            Debug.Log("50 gem win");
+            gemText.text = " 50 gem win";
+            gemTextMeshPro.text = " 50 gem win";
+        }
+        if (gemManager.gem100 == true)
+        {
+            Debug.Log("100 gem win");
+            gemText.text = " 100 gem win";
+            gemTextMeshPro.text = " 100 gem win";
+        }
+        
+        
         
     }
 }
